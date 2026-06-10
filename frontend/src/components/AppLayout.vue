@@ -10,16 +10,53 @@
             Sky-Lark
           </h1>
         </div>
-        <nav class="flex gap-6">
-          <router-link 
-            to="/" 
+        <nav class="flex items-center gap-1">
+          <router-link
+            to="/"
             class="nav-link"
             active-class="nav-link-active"
           >
             首页
           </router-link>
-          <router-link 
-            to="/about" 
+
+          <el-dropdown trigger="click">
+            <span class="nav-link cursor-pointer flex items-center gap-1">
+              废液管理
+              <el-icon class="el-icon--right"><ArrowDown /></el-icon>
+            </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>
+                  <router-link to="/waste/submit" class="dropdown-link">
+                    废液提交
+                  </router-link>
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <router-link to="/waste/safety-check" class="dropdown-link">
+                    安全员检查
+                  </router-link>
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <router-link to="/waste/storage" class="dropdown-link">
+                    暂存间入库
+                  </router-link>
+                </el-dropdown-item>
+                <el-dropdown-item>
+                  <router-link to="/waste/collection" class="dropdown-link">
+                    第三方回收
+                  </router-link>
+                </el-dropdown-item>
+                <el-dropdown-item divided>
+                  <router-link to="/waste/trace" class="dropdown-link">
+                    追踪查询
+                  </router-link>
+                </el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+
+          <router-link
+            to="/about"
             class="nav-link"
             active-class="nav-link-active"
           >
@@ -36,6 +73,10 @@
     </footer>
   </div>
 </template>
+
+<script setup>
+import { ArrowDown } from '@element-plus/icons-vue'
+</script>
 
 <style scoped>
 .nav-link {
@@ -77,6 +118,17 @@
 .nav-link-active::after {
   background: #2563eb;
   transform: scaleX(1);
+}
+
+.dropdown-link {
+  color: #475569;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.dropdown-link:hover {
+  color: #2563eb;
 }
 
 .animate-fade-in {
